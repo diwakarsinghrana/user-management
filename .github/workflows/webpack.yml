@@ -27,19 +27,15 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: '18'
-    - name: Install dependencies
-      run: |
-        npm install
-        npx webpack
-    
-    - name: Build with Webpack
-      run: npm run build
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: build
-        path: dist/
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install webpack-cli
+      run: npm install -D webpack-cli
+    
+    - name: Run Webpack
+      run: npx webpack --config webpack.config.js
