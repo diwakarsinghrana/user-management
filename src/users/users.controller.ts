@@ -1,9 +1,11 @@
-import { Controller, Get, Param, Query, Post, Body, Put, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Param, Query, Post, Body, Put, Delete, UsePipes, ValidationPipe, UseInterceptors } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto, UpdateUserDto } from './user.dto';
 import { User } from './schemas/user.schema';
+import { CacheInterceptor, CacheTTL } from '@nestjs/cache-manager';
 
 @Controller('users')
+// @UseInterceptors(CacheInterceptor)
 export class UsersController {
     constructor(private readonly usersService: UsersService) { }
 
@@ -14,6 +16,7 @@ export class UsersController {
         return this.usersService.searchUsers(username, minAgeNum, maxAgeNum);
     }
 
+    @CacheTTL(6000)
     @Get()
     async getAllUsers(): Promise<User[]> {
         return this.usersService.getAllUsers();
@@ -21,7 +24,6 @@ export class UsersController {
 
     @Get(':id')
     async getUser(@Param('id') id: string) {
-        console.log(id)
         return await this.usersService.getUserById(id);
     }
 

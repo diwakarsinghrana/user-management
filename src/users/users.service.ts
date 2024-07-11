@@ -32,7 +32,15 @@ export class UsersService {
     }
 
     async getAllUsers(): Promise<UserDocument[]> {
-        return this.userModel.find({ blocked: false }).exec();
+        const cachedUser: string = await this.cacheManager.get(`users`);
+        if (cachedUser) {
+            return JSON.parse(cachedUser);
+        }
+
+        const result = await this.userModel.find({ blocked: false });
+        await this.cacheManager.set(`users`, JSON.stringify(result));
+
+        return result;
     }
 
     async searchUsers(username?: string, minAge?: number, maxAge?: number): Promise<User[]> {
