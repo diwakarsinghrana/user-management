@@ -37,7 +37,9 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install amqp-connection-manager @nestjs/platform-socket.io
 
       - name: Install additional dependencies
         run: npm install snappy socks aws4 mongodb-client-encryption @nestjs/websockets @nestjs/microservices
