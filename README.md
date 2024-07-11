@@ -4,6 +4,9 @@
 $ npm install
 ```
 
+# Environment Variable
+MONGODB_URI = url of mongodb
+
 ## Running the app
 
 ```bash

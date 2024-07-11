@@ -5,10 +5,12 @@ import { UsersService } from './users/users.service';
 import { UserSchema } from './users/schemas/user.schema';
 import { BlockController } from './block/block.controller';
 import { CacheModule } from '@nestjs/cache-manager';
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://diwakar:3WqnlVGwxXsiAgwr@cluster0.vdccslc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
     CacheModule.register({
       max: 100,
