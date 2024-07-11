@@ -1,8 +1,3 @@
-## Clone repository
-
-git clone <https://github.com/diwakarsinghrana/user-management.git>
-cd project-directory
-
 ## Installation
 
 ```bash
