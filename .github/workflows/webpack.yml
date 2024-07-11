@@ -29,21 +29,21 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Install webpack-cli
-      run: npm install -D webpack-cli
-    
-    - name: Run Webpack
-      run: npx webpack --config webpack.config.js
-    
-    - name: Run tests
-      run: npm test
+      - name: Install webpack-cli
+        run: npm install -D webpack-cli
+      
+      - name: Run Webpack
+        run: npx webpack --config webpack.config.js
+      
+      - name: Run tests
+        run: npm test
