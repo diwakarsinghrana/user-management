@@ -39,6 +39,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install additional dependencies
+        run: npm install snappy socks aws4 mongodb-client-encryption @nestjs/websockets @nestjs/microservices
+
+
       - name: Install webpack-cli
         run: npm install -D webpack-cli
       

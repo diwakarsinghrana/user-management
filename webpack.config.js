@@ -1,9 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: './src/main.ts',
     target: 'node',
-    mode: 'development', // or 'development'
+    mode: 'production', // or 'development'
     module: {
         rules: [
             {
@@ -26,5 +27,14 @@ module.exports = {
         'cache-manager-redis-store': 'commonjs cache-manager-redis-store',
         '@nestjs/websockets': 'commonjs @nestjs/websockets',
         '@nestjs/microservices': 'commonjs @nestjs/microservices',
+        snappy: 'commonjs snappy',
+        socks: 'commonjs socks',
+        aws4: 'commonjs aws4',
+        'mongodb-client-encryption': 'commonjs mongodb-client-encryption',
     },
+    plugins: [
+        new webpack.IgnorePlugin({
+            resourceRegExp: /^optional-module$/,
+        }),
+    ],
 };
