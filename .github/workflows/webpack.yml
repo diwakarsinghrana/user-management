@@ -40,6 +40,10 @@ jobs:
         run: |
           npm install
           npm install amqp-connection-manager @nestjs/platform-socket.io
+          npm install kerberos
+          npm install @mongodb-js/zstd
+          npm install @aws-sdk/credential-providers
+          npm install gcp-metadata
 
       - name: Install additional dependencies
         run: npm install snappy socks aws4 mongodb-client-encryption @nestjs/websockets @nestjs/microservices
