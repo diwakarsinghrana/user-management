@@ -1,3 +1,7 @@
+## Setup MongoDB and Redis:
+  Ensure MongoDB is running and get the connection URL.
+  Ensure Redis is running on port 6379.
+
 ## Installation
 
 ```bash
